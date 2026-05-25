@@ -1,0 +1,21 @@
+services:
+  user-server:
+    build:
+      context: .
+      dockerfile: user-server/Dockerfile
+    environment:
+      PORT: "50051"
+    ports:
+      - "50051:50051"
+
+  order-server:
+    build:
+      context: .
+      dockerfile: order-server/Dockerfile
+    depends_on:
+      - user-server
+    environment:
+      PORT: "3000"
+      USER_SERVICE_URL: "user-server:50051"
+    ports:
+      - "3000:3000"
