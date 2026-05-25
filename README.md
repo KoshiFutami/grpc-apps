@@ -65,7 +65,7 @@ grpcurl -plaintext -d '{"userId":"user-1"}' localhost:50051 user.v1.UserService/
 5. HTTP リクエストから gRPC 呼び出しへ流れる箇所を書く
 6. `docker-compose.yml` でコンテナ間通信の宛先が `user-server:50051` になっていることを確認する
 
-Go の生成コードを手元で見たい場合は、Go 1.26 系を入れた状態で次を実行します。
+Go の生成コードを作る場合は、次を実行します。ローカルの Go バージョンに依存しないよう、Docker 上の Go 1.26.3 で生成します。
 
 ```bash
 make user-generate

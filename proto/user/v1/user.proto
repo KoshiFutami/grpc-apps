@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "github.com/koshifutami/grpc-apps/user-server/gen/user/v1;userv1";
+
+service UserService {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+message GetUserRequest {
+    string user_id = 1; // 1 はフィールド番号
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message User {
+    string user_id = 1;
+    string name = 2;
+    string email = 3;
+}
