@@ -7,6 +7,7 @@ import (
 
 	userv1 "github.com/koshifutami/grpc-apps/user-server/gen/user/v1"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 type UserService struct {
@@ -35,6 +36,7 @@ func main() {
 	server := grpc.NewServer()
 
 	userv1.RegisterUserServiceServer(server, &UserService{})
+	reflection.Register(server)
 
 	log.Println("user server listening on :50051")
 

@@ -2,7 +2,7 @@ FROM golang:1.26.3-bookworm AS builder
 
 WORKDIR /app
 
-COPY user-server/go.mod ./
+COPY user-server/go.mod user-server/go.sum ./
 RUN go mod download
 
 COPY user-server ./
